@@ -1,0 +1,208 @@
+Role,Skill,Count
+Data Analyst,artificial intelligence,2
+Data Analyst,research,32
+Data Analyst,data analysis,25
+Data Analyst,analysis,32
+Data Analyst,r,10
+Data Analyst,sql,25
+Data Analyst,power bi,16
+Data Analyst,data visualization,28
+Data Analyst,excel,12
+Data Analyst,statistics,9
+Data Analyst,tableau,13
+Data Analyst,python,21
+Data Analyst,communication,13
+Data Analyst,pandas,7
+Data Analyst,leadership,3
+Data Analyst,business analysis,1
+Data Analyst,numpy,6
+Data Analyst,dashboarding,5
+Data Analyst,stakeholder management,3
+Data Analyst,kpi,4
+Data Analyst,etl,7
+Data Analyst,aws,4
+Data Analyst,gcp,4
+Data Analyst,azure,3
+Data Analyst,ggplot2,1
+Data Analyst,matplotlib,3
+Data Analyst,tensorflow,1
+Data Analyst,snowflake,1
+Data Analyst,oracle,1
+Data Analyst,presentation,2
+Data Analyst,big data,1
+Data Analyst,seaborn,1
+Other,power bi,4
+Other,java,1
+Other,excel,2
+Other,big data,11
+Other,tableau,1
+Other,python,3
+Other,communication,5
+Other,snowflake,3
+Other,sql,5
+Other,dashboarding,3
+Other,etl,4
+Other,llm,1
+Other,aws,4
+Other,nlp,1
+Other,analysis,10
+Other,data visualization,8
+Other,research,3
+Other,data analysis,6
+Other,spark,2
+Other,leadership,1
+Other,airflow,1
+Other,hadoop,1
+Other,kpi,1
+Data Engineer,airflow,15
+Data Engineer,sql,21
+Data Engineer,postgresql,3
+Data Engineer,power bi,3
+Data Engineer,dashboarding,1
+Data Engineer,mysql,3
+Data Engineer,mongodb,4
+Data Engineer,etl,21
+Data Engineer,communication,11
+Data Engineer,snowflake,8
+Data Engineer,analysis,4
+Data Engineer,dbt,8
+Data Engineer,aws,10
+Data Engineer,python,17
+Data Engineer,azure,9
+Data Engineer,hadoop,3
+Data Engineer,java,5
+Data Engineer,spark,11
+Data Engineer,big data,5
+Data Engineer,gcp,8
+Data Engineer,scala,2
+Data Engineer,databricks,5
+Data Engineer,stakeholder management,2
+Data Engineer,oracle,2
+Data Engineer,data visualization,4
+Data Engineer,tableau,4
+Data Engineer,research,1
+Data Engineer,statistics,1
+Data Engineer,nlp,1
+Data Engineer,pandas,1
+Data Engineer,llm,1
+Analytics,airflow,1
+Analytics,snowflake,2
+Analytics,power bi,16
+Analytics,leadership,2
+Analytics,etl,2
+Analytics,python,16
+Analytics,data analysis,12
+Analytics,analysis,16
+Analytics,sql,15
+Analytics,excel,19
+Analytics,tableau,12
+Analytics,data visualization,16
+Analytics,java,1
+Analytics,dashboarding,1
+Analytics,market research,1
+Analytics,research,2
+Analytics,communication,4
+Analytics,statistics,3
+Analytics,aws,1
+Analytics,databricks,1
+Analytics,gcp,1
+Analytics,presentation,1
+Analytics,azure,2
+Analytics,r,1
+Analytics,pandas,2
+Analytics,seaborn,1
+Analytics,matplotlib,1
+Data Scientist,python,15
+Data Scientist,data analysis,7
+Data Scientist,analysis,12
+Data Scientist,sql,10
+Data Scientist,communication,10
+Data Scientist,hadoop,3
+Data Scientist,tensorflow,7
+Data Scientist,mongodb,2
+Data Scientist,spark,6
+Data Scientist,pandas,6
+Data Scientist,numpy,6
+Data Scientist,statistics,10
+Data Scientist,aws,6
+Data Scientist,tableau,5
+Data Scientist,big data,3
+Data Scientist,research,5
+Data Scientist,databricks,1
+Data Scientist,data preprocessing,5
+Data Scientist,pytorch,5
+Data Scientist,data visualization,8
+Data Scientist,gcp,2
+Data Scientist,azure,4
+Data Scientist,etl,1
+Data Scientist,presentation,3
+Data Scientist,r,5
+Data Scientist,snowflake,1
+Data Scientist,postgresql,1
+Data Scientist,power bi,3
+Data Scientist,excel,4
+Data Scientist,business analysis,1
+Data Scientist,scala,1
+Data Scientist,java,1
+Data Scientist,nlp,3
+Data Scientist,seaborn,2
+Data Scientist,computer vision,2
+Data Scientist,llm,3
+Data Scientist,stakeholder management,1
+Data Scientist,matplotlib,2
+Data Scientist,dashboarding,1
+Data Scientist,leadership,2
+Data Scientist,artificial intelligence,1
+Data Scientist,airflow,1
+Machine Learning Engineer,r,1
+Machine Learning Engineer,python,9
+Machine Learning Engineer,data analysis,1
+Machine Learning Engineer,analysis,3
+Machine Learning Engineer,pandas,2
+Machine Learning Engineer,artificial intelligence,2
+Machine Learning Engineer,pytorch,5
+Machine Learning Engineer,nlp,4
+Machine Learning Engineer,tensorflow,5
+Machine Learning Engineer,leadership,2
+Machine Learning Engineer,llm,3
+Machine Learning Engineer,aws,2
+Machine Learning Engineer,research,4
+Machine Learning Engineer,azure,2
+Machine Learning Engineer,sql,2
+Machine Learning Engineer,numpy,1
+Machine Learning Engineer,statistics,3
+Machine Learning Engineer,gcp,2
+Machine Learning Engineer,tableau,1
+Machine Learning Engineer,computer vision,1
+Machine Learning Engineer,communication,2
+Machine Learning Engineer,big data,1
+Machine Learning Engineer,oracle,1
+Business Analyst,excel,11
+Business Analyst,research,9
+Business Analyst,analysis,11
+Business Analyst,power bi,1
+Business Analyst,business analysis,6
+Business Analyst,leadership,2
+Business Analyst,python,1
+Business Analyst,data analysis,2
+Business Analyst,presentation,2
+Business Analyst,market research,1
+Business Analyst,communication,3
+Business Analyst,sql,1
+Business Analyst,llm,2
+Business Analyst,statistics,1
+Product Analyst,r,4
+Product Analyst,communication,3
+Product Analyst,data analysis,3
+Product Analyst,analysis,4
+Product Analyst,sql,4
+Product Analyst,excel,2
+Product Analyst,market research,1
+Product Analyst,python,5
+Product Analyst,research,1
+Product Analyst,power bi,2
+Product Analyst,data visualization,4
+Product Analyst,tableau,2
+Product Analyst,nlp,1
+Product Analyst,dashboarding,1
+Product Analyst,big data,1
