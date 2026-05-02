@@ -122,6 +122,7 @@ normalization_dict = {
     "visualization": "data visualization",
     "dashboard": "dashboarding"
 }
+
 df['extracted_skills'] = (df['extracted_skills']
         .apply(lambda skills: [normalization_dict.get(skill, skill) for skill in skills]))
 
