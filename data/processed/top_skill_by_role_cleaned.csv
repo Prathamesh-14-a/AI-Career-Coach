@@ -1,0 +1,81 @@
+Standardized_Job_Title,Skill,Count
+Analytics,excel,19
+Analytics,data visualization,16
+Analytics,power bi,16
+Analytics,python,16
+Analytics,sql,15
+Analytics,tableau,12
+Analytics,statistics,3
+Analytics,azure,2
+Analytics,etl,2
+Analytics,leadership,2
+Business Analyst,excel,11
+Business Analyst,business analysis,6
+Business Analyst,leadership,2
+Business Analyst,llm,2
+Business Analyst,presentation,2
+Business Analyst,market research,1
+Business Analyst,power bi,1
+Business Analyst,python,1
+Business Analyst,sql,1
+Business Analyst,statistics,1
+Data Analyst,data visualization,28
+Data Analyst,sql,25
+Data Analyst,python,21
+Data Analyst,power bi,16
+Data Analyst,tableau,13
+Data Analyst,excel,12
+Data Analyst,r,10
+Data Analyst,statistics,9
+Data Analyst,etl,7
+Data Analyst,pandas,7
+Data Engineer,etl,21
+Data Engineer,sql,21
+Data Engineer,python,17
+Data Engineer,airflow,15
+Data Engineer,spark,11
+Data Engineer,aws,10
+Data Engineer,azure,9
+Data Engineer,dbt,8
+Data Engineer,gcp,8
+Data Engineer,snowflake,8
+Data Scientist,python,15
+Data Scientist,sql,10
+Data Scientist,statistics,10
+Data Scientist,data visualization,8
+Data Scientist,tensorflow,7
+Data Scientist,aws,6
+Data Scientist,numpy,6
+Data Scientist,pandas,6
+Data Scientist,spark,6
+Data Scientist,data preprocessing,5
+Machine Learning Engineer,python,9
+Machine Learning Engineer,pytorch,5
+Machine Learning Engineer,tensorflow,5
+Machine Learning Engineer,nlp,4
+Machine Learning Engineer,llm,3
+Machine Learning Engineer,statistics,3
+Machine Learning Engineer,artificial intelligence,2
+Machine Learning Engineer,aws,2
+Machine Learning Engineer,azure,2
+Machine Learning Engineer,gcp,2
+Other,big data,11
+Other,data visualization,8
+Other,sql,5
+Other,aws,4
+Other,etl,4
+Other,power bi,4
+Other,dashboarding,3
+Other,python,3
+Other,snowflake,3
+Other,excel,2
+Product Analyst,python,5
+Product Analyst,data visualization,4
+Product Analyst,r,4
+Product Analyst,sql,4
+Product Analyst,excel,2
+Product Analyst,power bi,2
+Product Analyst,tableau,2
+Product Analyst,big data,1
+Product Analyst,dashboarding,1
+Product Analyst,market research,1
