@@ -3,14 +3,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# -------------------------------
 # LOAD DATA
 # -------------------------------
 def load_data(path):
     return pd.read_csv(path)
 
 
-# -------------------------------
 # BASIC INFO
 # -------------------------------
 def basic_info(df):
@@ -18,7 +16,6 @@ def basic_info(df):
     print("\nMissing Values:\n", df.isnull().sum())
 
 
-# -------------------------------
 # ROLE ANALYSIS
 # -------------------------------
 def role_analysis(df):
@@ -38,7 +35,6 @@ def role_analysis(df):
     return role_count
 
 
-# -------------------------------
 # LOCATION ANALYSIS
 # -------------------------------
 def location_analysis(df):
@@ -57,7 +53,6 @@ def location_analysis(df):
     return location_count
 
 
-# -------------------------------
 # EXPERIENCE ANALYSIS
 # -------------------------------
 def experience_analysis(df):
@@ -75,7 +70,6 @@ def experience_analysis(df):
     return exp_counts
 
 
-# -------------------------------
 # SALARY ANALYSIS
 # -------------------------------
 def salary_analysis(df):
@@ -95,7 +89,6 @@ def salary_analysis(df):
     return salary_by_role
 
 
-# -------------------------------
 # REMOTE VS ONSITE
 # -------------------------------
 def remote_analysis(df):
@@ -114,14 +107,12 @@ def remote_analysis(df):
     return remote_count, onsite_count
 
 
-# -------------------------------
 # COMPANY ANALYSIS
 # -------------------------------
 def company_analysis(df):
     return df["Company Name"].value_counts().head(10)
 
 
-# -------------------------------
 # EXPORT RESULTS
 # -------------------------------
 def save_outputs(role_count, location_count):
@@ -129,7 +120,6 @@ def save_outputs(role_count, location_count):
     location_count.to_csv("data/processed/location_distribution.csv")
 
 
-# -------------------------------
 # MAIN PIPELINE
 # -------------------------------
 def main():
@@ -149,7 +139,6 @@ def main():
     print("EDA pipeline executed successfully!")
 
 
-# -------------------------------
 # ENTRY POINT
 # -------------------------------
 if __name__ == "__main__":
