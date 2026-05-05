@@ -6,27 +6,27 @@ excel,50,BI,High,28.40909090909091,4.0,No,Excel
 power bi,45,BI,High,25.568181818181817,5.0,No,Power BI
 tableau,38,BI,Medium,21.59090909090909,6.0,No,Tableau
 etl,35,Data Engineering,Medium,19.886363636363637,7.0,No,ETL
-aws,27,Cloud,Medium,15.340909090909092,8.0,Yes,Amazon Web Services (AWS)
 statistics,27,Other,Medium,15.340909090909092,8.0,No,Statistics
+aws,27,Cloud,Medium,15.340909090909092,8.0,Yes,Amazon Web Services (AWS)
 big data,22,Data Engineering,Medium,12.5,9.0,Yes,Big Data
 r,21,Programming,Medium,11.931818181818182,10.0,No,R
 azure,20,Cloud,Medium,11.363636363636363,11.0,Yes,Microsoft Azure
 spark,19,Data Engineering,Medium,10.795454545454545,12.0,Yes,Apache Spark
-pandas,18,Data Cleaning,Medium,10.227272727272728,13.0,No,Pandas
 airflow,18,Data Engineering,Medium,10.227272727272728,13.0,Yes,Apache Airflow
+pandas,18,Data Cleaning,Medium,10.227272727272728,13.0,No,Pandas
 gcp,17,Cloud,Medium,9.659090909090908,14.0,Yes,Google Cloud Platform (GCP)
 snowflake,15,Data Engineering,Medium,8.522727272727272,15.0,Yes,Snowflake
-tensorflow,13,Machine Learning,Low,7.386363636363637,16.0,Yes,TensorFlow
 numpy,13,Other,Low,7.386363636363637,16.0,No,NumPy
+tensorflow,13,Machine Learning,Low,7.386363636363637,16.0,Yes,TensorFlow
 dashboarding,12,Data Visualization,Low,6.8181818181818175,17.0,No,Dashboarding
 leadership,12,Soft Skills,Low,6.8181818181818175,17.0,No,Leadership
 pytorch,10,Machine Learning,Low,5.681818181818182,18.0,Yes,PyTorch
 nlp,10,Artificial Intelligence,Low,5.681818181818182,18.0,Yes,Natural Language Processing (NLP)
 llm,10,Artificial Intelligence,Low,5.681818181818182,18.0,Yes,Large Language Models (LLMs)
-java,8,Programming,Low,4.545454545454546,19.0,Yes,Java
 dbt,8,Data Engineering,Low,4.545454545454546,19.0,Yes,dbt
-business analysis,8,Other,Low,4.545454545454546,19.0,No,Business Analysis
 presentation,8,Soft Skills,Low,4.545454545454546,19.0,No,Presentation Skills
+business analysis,8,Other,Low,4.545454545454546,19.0,No,Business Analysis
+java,8,Programming,Low,4.545454545454546,19.0,Yes,Java
 hadoop,7,Data Engineering,Low,3.977272727272727,20.0,Yes,Hadoop
 databricks,7,Data Engineering,Low,3.977272727272727,20.0,Yes,Databricks
 matplotlib,6,Data Visualization,Low,3.4090909090909087,21.0,No,Matplotlib
