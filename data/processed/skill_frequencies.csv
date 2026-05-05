@@ -10,27 +10,27 @@ excel,50
 power bi,45
 tableau,38
 etl,35
-aws,27
 statistics,27
+aws,27
 big data,22
 r,21
 azure,20
 spark,19
-pandas,18
 airflow,18
+pandas,18
 gcp,17
 snowflake,15
-tensorflow,13
 numpy,13
+tensorflow,13
 dashboarding,12
 leadership,12
 pytorch,10
 nlp,10
 llm,10
-java,8
 dbt,8
-business analysis,8
 presentation,8
+business analysis,8
+java,8
 hadoop,7
 databricks,7
 matplotlib,6
