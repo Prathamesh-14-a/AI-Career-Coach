@@ -1,0 +1,20 @@
+Location,Standardized_Job_Title,salary_avg
+Bangalore,Analytics,550000.0
+Bangalore,Business Analyst,350000.0
+Bangalore,Machine Learning Engineer,800000.0
+Bangalore,Other,2100000.0
+Delhi,Analytics,450000.0
+Delhi,Business Analyst,420000.0
+Delhi,Data Analyst,250000.0
+Gurgaon,Business Analyst,425000.0
+Gurgaon,Data Analyst,330000.0
+Gurgaon,Machine Learning Engineer,330000.0
+Noida,Analytics,2850000.0
+Noida,Business Analyst,390000.0
+Noida,Data Engineer,3000000.0
+Remote,Analytics,550000.0
+Remote,Business Analyst,345000.0
+Remote,Data Analyst,530000.0
+Remote,Data Scientist,1300000.0
+Remote,Machine Learning Engineer,500000.0
+Remote,Other,550000.0
