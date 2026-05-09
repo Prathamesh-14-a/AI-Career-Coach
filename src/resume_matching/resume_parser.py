@@ -2,11 +2,13 @@ import pdfplumber
 import re
 from pathlib import Path
 import logging
+import pytesseract
+from pdf2image import convert_from_path
 
 # -------------------------------
 # TECHNICAL SKILL LISTS
 # -------------------------------
-technical_skills = [
+TECHNICAL_SKILLS = [
     
     'python', 'r', 'sql', 
     'excel' 'microsoft excel',
@@ -26,6 +28,25 @@ technical_skills = [
     ]
 
 
+# ---------------------------------------------------
+# SKILL ALIASES
+# ---------------------------------------------------
+
+ALIASES = {
+    "powerbi": "power bi",
+    "power-bi": "power bi",
+    "machinelearning": "machine learning",
+    "postgres": "postgresql"
+}
+
+# ---------------------------------------------------
+# TESSERACT PATH (WINDOWS)
+# ---------------------------------------------------
+
+pytesseract.pytesseract.tesseract_cmd = (
+    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+)
+
 # ---------------------------------------
 # RESUME TEXT CLEAN
 # ---------------------------------------
@@ -33,6 +54,9 @@ def clean_resume_text(text:str) -> str:
 
     # lower case
     text =  text.lower()
+     # normalize aliases before cleanup
+    for alias, original in ALIASES.items():
+        text = text.replace(alias, original)
     # extra spaces
     text = re.sub(r'\s+', ' ', text)
     # character symbols
@@ -64,14 +88,60 @@ def extract_resume_text(path:str) ->str:
                 if page_text :
                     pages_text.append(page_text)
                 
-        full_text = " ".join(pages_text)
 
-        return clean_resume_text(full_text)
+        return  " ".join(pages_text)
 
     except Exception as e:
         logging.error(f'Error Reading Resume : {e}')
         return ""
     
+
+# -----------------------------------------------
+# OCR TEXT EXTRACTION
+# -----------------------------------------------
+def extract_with_ocr(path: str) -> str:
+
+    extracted_text = []
+
+    try:
+
+        images = convert_from_path(
+            path )
+
+        for image in images:
+
+            text = pytesseract.image_to_string(image)
+
+            extracted_text.append(text)
+
+        return " ".join(extracted_text)
+
+    except Exception as e:
+
+        print(f"OCR Error: {e}")
+
+        return ""
+    
+
+# ------------------------------------------------
+# TEXT VALIDATION
+# ------------------------------------------------
+def text_validation(text:str) -> bool:
+
+    # if not a text
+    if not text:
+        return False
+
+    # if length is minimun
+    if len(text) < 100:
+        return False
+    
+    # if words are limited 
+    if len(text.split()) < 30:
+        return False
+    
+    return True
+
 
 # ----------------------------------------------
 # EXTRACT SKILL FROM RESUME
@@ -94,21 +164,48 @@ def extract_skills(resume_text: str, skills_list: list) -> list:
 # -------------------------------------------------
 def process_resume(path:str) -> dict:
 
+
+    print("\nTrying PDFPlumber extraction...")
+    # trying normal extraction
     resume_text = extract_resume_text(path)
 
+    if not text_validation(resume_text):
+
+        print('text quality is poor..')
+        print('switching to OCR extraction')
+        resume_text = extract_with_ocr(path)
+    
+    else:
+        print('pyplumber extraction successful...')
+
+    
+    # clean text
+    cleaned_text = clean_resume_text(resume_text)
+
+    # Extract skills
+    skills = extract_skills(cleaned_text, TECHNICAL_SKILLS)
+
     # validation
-    if not resume_text:
+    if not cleaned_text:
         return {
             'status' : 'failed' ,
             'skills' : [] , 
             'resume_text' : ''
         }
     
-    skills = extract_skills(resume_text , technical_skills)
+     # determine extraction method
+    extraction_method = (
+        "ocr"
+        if not text_validation(
+            extract_resume_text(path)
+        )
+        else "pdfplumber"
+    )
 
     return {
         'status' : 'successful' , 
         'skills' : skills , 
+        'method' : extraction_method ,
         'resume_text' : resume_text[0:100] + '.......'
     }
 
