@@ -5,6 +5,10 @@ import logging
 import pytesseract
 from pdf2image import convert_from_path
 
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
+
 # -------------------------------
 # TECHNICAL SKILL LISTS
 # -------------------------------
@@ -20,7 +24,7 @@ TECHNICAL_SKILLS = [
     'machine learning',
     'tensorflow', 'pytorch', 'scikit-learn',
 
-    'aws', 'azure', 'gcp', 
+    'aws', 'azure', 'gcp', 'statistics'
 
     'pandas', 'numpy', 'matplotlib',
     'seaborn', 'plotly', 'ggplot2',
