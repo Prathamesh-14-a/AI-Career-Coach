@@ -1,0 +1,5 @@
+Standardized_Job_Title,Skill,Count,Priority,Category
+data analyst,excel,12,Medium,Spreadsheet
+data analyst,r,10,Medium,Programming
+data analyst,statistics,9,Medium,Mathematics
+data analyst,pandas,7,Medium,Python Library
