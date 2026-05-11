@@ -1,0 +1,18 @@
+Resume,Role,Match Score %,Matched Skills,Missing Skills,Matched Skill Count,Missing Skill Count
+resume_1,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_2,Data Scientist,20.0,"python, sql","aws, data preprocessing, numpy, pandas, pytorch, spark, statistics, tensorflow",2,8
+resume_3,Data Scientist,20.0,"python, sql","aws, data preprocessing, numpy, pandas, pytorch, spark, statistics, tensorflow",2,8
+resume_4,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_5,Data Scientist,10.0,python,"aws, data preprocessing, numpy, pandas, pytorch, spark, sql, statistics, tensorflow",1,9
+resume_6,Data Scientist,10.0,python,"aws, data preprocessing, numpy, pandas, pytorch, spark, sql, statistics, tensorflow",1,9
+resume_7,Data Scientist,10.0,python,"aws, data preprocessing, numpy, pandas, pytorch, spark, sql, statistics, tensorflow",1,9
+resume_8,Data Scientist,10.0,python,"aws, data preprocessing, numpy, pandas, pytorch, spark, sql, statistics, tensorflow",1,9
+resume_9,Data Scientist,10.0,python,"aws, data preprocessing, numpy, pandas, pytorch, spark, sql, statistics, tensorflow",1,9
+resume_10,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_11,Data Scientist,20.0,"python, sql","aws, data preprocessing, numpy, pandas, pytorch, spark, statistics, tensorflow",2,8
+resume_12,Data Scientist,20.0,"python, sql","aws, data preprocessing, numpy, pandas, pytorch, spark, statistics, tensorflow",2,8
+resume_13,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_14,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_15,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_16,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7
+resume_17,Data Scientist,30.0,"numpy, python, sql","aws, data preprocessing, pandas, pytorch, spark, statistics, tensorflow",3,7

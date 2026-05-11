@@ -1,0 +1,11 @@
+Resume,Role,Match Score %,Matched Skills,Missing Skills,Matched Skill Count,Missing Skill Count
+resume_1,Data Analyst,60.0,"etl, numpy, power bi, python, sql, tableau","excel, pandas, r, statistics",6,4
+resume_2,Data Analyst,40.0,"python, r, sql, tableau","etl, excel, numpy, pandas, power bi, statistics",4,6
+resume_3,Data Analyst,40.0,"power bi, python, sql, tableau","etl, excel, numpy, pandas, r, statistics",4,6
+resume_4,Data Analyst,60.0,"numpy, power bi, python, r, sql, tableau","etl, excel, pandas, statistics",6,4
+resume_5,Data Analyst,20.0,"python, r","etl, excel, numpy, pandas, power bi, sql, statistics, tableau",2,8
+resume_6,Data Analyst,20.0,"python, r","etl, excel, numpy, pandas, power bi, sql, statistics, tableau",2,8
+resume_7,Data Analyst,20.0,"python, r","etl, excel, numpy, pandas, power bi, sql, statistics, tableau",2,8
+resume_8,Data Analyst,20.0,"python, r","etl, excel, numpy, pandas, power bi, sql, statistics, tableau",2,8
+resume_9,Data Analyst,20.0,"python, r","etl, excel, numpy, pandas, power bi, sql, statistics, tableau",2,8
+resume_10,Data Analyst,60.0,"etl, numpy, power bi, python, r, sql","excel, pandas, statistics, tableau",6,4
