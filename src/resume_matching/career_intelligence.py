@@ -398,83 +398,52 @@ def identify_weakness_areas( missing_skills):
     weakness_mapping  = {
 
     "Programming":
-    "Your programming foundation appears limited or inconsistent, "
-    "which reduces your ability to build scalable analytical workflows independently. "
-    "This weakness often leads to dependency on low-code tools and restricts problem-solving depth during technical tasks. "
-    "Strong programming ability is considered a baseline expectation for modern data roles, especially in automation, backend analytics, and machine learning pipelines.",
+    "Limited programming skills reduce your ability to build automated analytics workflows and solve technical problems independently. "
+    "This is a core gap for modern data roles.",
 
     "Statistics":
-    "Your profile shows insufficient statistical depth, "
-    "which weakens your ability to interpret patterns, validate models,"
-    " and make data-driven decisions confidently. Without statistical reasoning, "
-    "analytical outputs risk becoming descriptive rather than scientifically reliable. "
-    "This gap becomes especially critical in machine learning, experimentation, forecasting, and"
-    " business decision support.",
+    "Insufficient statistical depth weakens your ability to validate models and interpret data with confidence. "
+    "It can turn analysis into descriptive output rather than decision-ready insight.",
 
     "Machine Learning":
-    "Your machine learning exposure appears underdeveloped, "
-    "limiting your ability to transition from reporting-focused "
-    "roles into predictive and intelligent systems development. "
-    "This weakness suggests limited familiarity with model training, "
-    "evaluation, feature engineering, and deployment workflows that are "
-    "increasingly expected in competitive data science environments.",
+    "Weak machine learning exposure limits your ability to move into predictive analytics and intelligent systems development. "
+    "It suggests gaps in model-building, evaluation, and deployment experience.",
 
     "Data Engineering":
-    "Your profile indicates weak data engineering capabilities, "
-    "which may affect your ability to handle real-world production "
-    "data systems. Modern organizations expect professionals to work with ETL pipelines, large-scale datasets, and data infrastructure. Limited exposure here can create bottlenecks when moving from academic projects to enterprise-level analytics environments.",
+    "Weak data engineering skills reduce readiness for real-world ETL pipelines and production data systems. "
+    "This gap can hinder work with large-scale datasets and enterprise analytics environments.",
 
     "Database":
-    "Your database skills appear insufficient for efficient data extraction, "
-    "transformation, and querying tasks. Weak database proficiency often leads "
-    "to slower analytical workflows and limited capability in handling structured "
-    "enterprise data systems. Since SQL and database concepts are core industry requirements, "
-    "this gap can significantly reduce employability in analytics-related roles.",
+    "Insufficient database skills slow data extraction and querying work, undermining performance in analytics tasks. "
+    "SQL and structured data capability are core requirements for most data roles.",
 
     "Visualization":
-    "Your visualization capabilities appear limited, "
-    "which may reduce the clarity and business impact of your analytical findings. "
-    "Data storytelling is a critical skill in decision-making environments, "
-    "and weak visualization practices often prevent insights from being effectively communicated "
-    "to stakeholders and leadership teams.",
+    "Limited visualization skills reduce the clarity and business impact of your analytical findings. "
+    "This weakens your ability to communicate insights effectively to stakeholders.",
 
     "Business Analysis":
-    "Your profile suggests limited business analysis exposure,"
-    "which may affect your ability to connect technical outputs with business objectives. "
-    "Organizations increasingly value professionals who can translate data into actionable "
-    "business decisions rather than producing isolated technical analysis without strategic context.",
+    "Limited business analysis exposure makes it harder to align technical work with business goals. "
+    "This gap can leave insights lacking strategic context.",
 
     "Cloud":
-    "Your cloud technology exposure appears minimal, "
-    "which may limit your readiness for modern scalable data ecosystems. "
-    "Many organizations now operate analytics and machine learning workflows on"
-    "cloud platforms, and insufficient cloud familiarity can reduce adaptability "
-    "in production-grade environments.",
+    "Minimal cloud exposure lowers readiness for scalable, production-grade data environments. "
+    "This gap makes it harder to adapt to modern cloud-native analytics workflows.",
 
     "Big Data":
-    "Your profile indicates limited experience with big data technologies and "
-    "distributed processing systems. This weakness may restrict your ability to "
-    "work with high-volume, high-velocity datasets commonly found in enterprise environments. "
-    "As organizations scale their data infrastructure, familiarity with big data ecosystems "
-    "becomes increasingly valuable.",
+    "Limited big data experience restricts your ability to work with high-volume distributed systems. "
+    "It reduces preparedness for enterprise-scale analytics roles.",
 
     "Orchestration":
-    "Your orchestration and workflow automation capabilities appear underdeveloped, "
-    "which may affect your ability to manage scalable and reliable data pipelines. "
-    "Modern data systems rely heavily on scheduling, monitoring, and dependency management tools, "
-    "and lacking these skills can limit operational efficiency in production environments.",
+    "Weak orchestration skills make it harder to manage reliable data pipelines and workflow automation. "
+    "This gap impacts production readiness and operational efficiency.",
 
     "Spreadsheet":
-    "Your spreadsheet-related analytical skills appear limited, "
-    "which may impact efficiency in quick business analysis and reporting workflows. "
-    "While advanced technical tools are important, spreadsheets remain heavily used "
-    "across organizations for operational analytics, ad-hoc analysis, and stakeholder collaboration.",
+    "Limited spreadsheet skills reduce efficiency in quick business analysis and ad hoc reporting. "
+    "Strong spreadsheet ability remains valuable for operational analytics across organizations.",
 
     "Python Library":
-    "Your exposure to essential Python libraries appears insufficient for advanced analytical "
-    "and machine learning workflows. Limited familiarity with industry-standard libraries may "
-    "reduce productivity, code efficiency, and the ability to implement scalable analytical solutions"
-    " effectively."
+    "Insufficient experience with Python analytics libraries limits your ability to build efficient data workflows. "
+    "It reduces productivity with standard tools like pandas, NumPy, and scikit-learn."
 
 }
 
@@ -537,75 +506,63 @@ def learning_direction(missing_skills):
     learning_insight_mapping = {
 
         "Programming": (
-            'Your learning journey should focus on building strong programming fundamentals such as functions, loops, object-oriented programming, and logical problem-solving. '
-            'Consistent coding practice through projects, debugging exercises, and algorithm-based challenges will improve your analytical development capabilities. '
-            'Strong programming skills are essential for automation, scalable workflows, and advanced data science applications.'
+            'Build a stronger programming foundation with regular coding practice and project work. '
+            'This will improve your ability to automate analytics and solve technical problems independently.'
         ),
 
         "Statistics": (
-            'You should focus on understanding core statistical concepts including probability, distributions, hypothesis testing, correlation, and statistical inference. '
-            'Applying these concepts on real-world datasets will strengthen your analytical reasoning and decision-making ability. '
-            'A strong statistical foundation is critical for machine learning, forecasting, experimentation, and business analytics.'
+            'Deepen your statistical understanding to interpret models and make data-driven decisions. '
+            'Stronger statistics skills turn analysis into reliable insight instead of just reports.'
         ),
 
         "Machine Learning": (
-            'Your learning should emphasize supervised and unsupervised learning, feature engineering, model evaluation, and optimization techniques. '
-            'Building practical machine learning projects using real datasets will help you understand how models behave in real scenarios rather than only learning theory. '
-            'Hands-on implementation is essential for developing strong predictive analytics capabilities.'
+            'Focus on practical ML skills like model training, evaluation, and deployment. '
+            'Hands-on projects will help you move from reporting to predictive analytics and intelligent systems.'
         ),
 
         "Data Engineering": (
-            'Focus on learning ETL pipelines, data warehousing, distributed systems, and scalable data processing workflows. '
-            'Working on projects involving automated data movement and transformation will improve your understanding of production-level data systems. '
-            'Data engineering knowledge is becoming increasingly important in modern analytics and AI environments.'
+            'Learn ETL workflows, data pipelines, and scalable processing to work with production data systems. '
+            'Improving these skills boosts readiness for enterprise analytics environments.'
         ),
 
         "Database": (
-            'You should strengthen your database knowledge by practicing SQL queries, joins, aggregations, indexing, and query optimization techniques. '
-            'Understanding how structured data is stored, managed, and retrieved efficiently is critical for analytics workflows. '
-            'Strong database skills significantly improve your ability to work with enterprise-level data systems.'
+            'Strengthen SQL and database querying skills for efficient data extraction and transformation. '
+            'Good database ability is essential for most analytics and BI roles.'
         ),
 
         "Visualization": (
-            'Your learning should focus on improving data storytelling, dashboard design, and visualization best practices. '
-            'Understanding how to present insights clearly using charts, KPIs, and business-focused reporting techniques will improve communication effectiveness. '
-            'Strong visualization skills help transform raw analysis into actionable business insights.'
+            'Improve data storytelling and dashboard design to make insights clearer and more persuasive. '
+            'Better visualization helps communicate results effectively to stakeholders.'
         ),
 
         "Business Analysis": (
-            'You should develop a stronger understanding of business problems, KPIs, decision-making frameworks, and stakeholder requirements. '
-            'Learning how to align analytical findings with business objectives will improve the practical value of your analysis. '
-            'Business analysis skills help bridge the gap between technical outputs and organizational impact.'
+            'Develop skills in business context, KPIs, and decision-making frameworks. '
+            'This helps turn technical analysis into strategic, actionable recommendations.'
         ),
 
         "Cloud": (
-            'Focus on learning cloud platforms such as AWS, Azure, or Google Cloud along with core concepts like storage, computing, and deployment services. '
-            'Understanding cloud-based workflows will improve your readiness for scalable analytics and machine learning systems. '
-            'Cloud skills are increasingly becoming standard requirements in data-focused careers.'
+            'Learn cloud platforms and their analytics workflows to support scalable, modern data systems. '
+            'Cloud familiarity is increasingly necessary for production-grade analytics roles.'
         ),
 
         "Big Data": (
-            'You should explore big data technologies such as Hadoop, Spark, and distributed computing concepts to understand large-scale data processing. '
-            'Working with high-volume datasets will help you learn scalability, performance optimization, and distributed system behavior. '
-            'Big data expertise is valuable for enterprise-level analytics environments.'
+            'Explore big data tools and distributed processing to handle large-scale datasets. '
+            'This prepares you for enterprise analytics where performance and scalability matter.'
         ),
 
         "Orchestration": (
-            'Focus on learning workflow orchestration tools such as Airflow or Prefect to understand pipeline scheduling, monitoring, and dependency management. '
-            'Building automated workflows will improve your understanding of production-grade data operations. '
-            'Orchestration skills are essential for maintaining scalable and reliable data systems.'
+            'Learn orchestration tools and workflow automation for reliable data pipelines. '
+            'These skills are key to managing scalable production data operations.'
         ),
 
         "Spreadsheet": (
-            'Your learning should include advanced spreadsheet concepts such as pivot tables, lookup functions, data cleaning, and business reporting techniques. '
-            'Spreadsheets remain heavily used across organizations for operational analysis and quick decision-making tasks. '
-            'Strong spreadsheet proficiency improves both analytical efficiency and business collaboration.'
+            'Build advanced spreadsheet proficiency for fast business analysis and reporting. '
+            'Spreadsheets remain widely used for operational analytics and stakeholder collaboration.'
         ),
 
         "Python Library": (
-            'Focus on mastering essential Python libraries such as Pandas, NumPy, Matplotlib, Seaborn, and Scikit-learn through project-based learning. '
-            'Understanding how these libraries interact within analytical workflows will improve your productivity and implementation quality. '
-            'Strong library knowledge is critical for efficient real-world data science development.'
+            'Master core Python libraries like pandas, NumPy, and scikit-learn through practical use. '
+            'This improves your productivity and effectiveness in real-world data workflows.'
         ),
 
     }
