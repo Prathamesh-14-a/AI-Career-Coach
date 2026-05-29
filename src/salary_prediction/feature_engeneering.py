@@ -1,17 +1,16 @@
 import pandas as pd
+import numpy as np
 from pathlib import Path
 from collections import Counter
 
 #------------------------------------------------------
 # PATH
-#-----------------------------------------------------
-
+#------------------------------------------------------
 BASE_PATH = Path("d:/Startup/Project/ai-career-coach")
 
 DATA_PATH = BASE_PATH / 'data' / 'Salary Prediction Data'
 
 SALARY_DATA_FILE = DATA_PATH / 'salary_preprocessed_data.csv'
-
 FEATURE_DATA = DATA_PATH / "salary_feature_data.csv"
 
 
@@ -21,16 +20,17 @@ FEATURE_DATA = DATA_PATH / "salary_feature_data.csv"
 def load_data():
     try:
         df = pd.read_csv(SALARY_DATA_FILE)
+
         print("Data Loaded Successfully")
         print(df.shape)
 
         return df
 
     except FileNotFoundError:
-        print('File Not Found')
+        print("File Not Found")
 
     except Exception as e:
-        print(f'File Loading Error : {e}')
+        print(f"File Loading Error: {e}")
 
     return None
 
@@ -43,21 +43,18 @@ def extract_top_skills(df, top_n=25):
     all_skills = []
 
     for row in df["Skills"]:
-
         skills = [
             s.strip().lower()
             for s in str(row).split(",")
             if s.strip()
         ]
-
         all_skills.extend(skills)
 
     skill_counts = Counter(all_skills)
 
     top_skills = [
         skill
-        for skill, count
-        in skill_counts.most_common(top_n)
+        for skill, count in skill_counts.most_common(top_n)
     ]
 
     print("\nTop Skills:")
@@ -67,14 +64,16 @@ def extract_top_skills(df, top_n=25):
 
 
 #------------------------------------------------------
-# CREATE BINARY SKILL FEATURES
+# CREATE BINARY SKILL FEATURES (FIXED)
 #------------------------------------------------------
 def create_skill_features(df, top_skills):
 
     for skill in top_skills:
-
         df[skill] = df["Skills"].apply(
-            lambda x: 1 if skill in str(x).lower() else 0
+            lambda x: 1 if skill in [
+                s.strip().lower()
+                for s in str(x).split(",")
+            ] else 0
         )
 
     print("\nSkill Features Created")
@@ -97,7 +96,7 @@ def reduce_location_categories(df, top_n=20):
 
 
 #------------------------------------------------------
-# EXTRA FEATURES
+# SKILL COUNT
 #------------------------------------------------------
 def create_skill_count_feature(df):
 
@@ -111,6 +110,7 @@ def create_skill_count_feature(df):
     print("\nSkill Count Feature Created")
 
     return df
+
 
 #------------------------------------------------------
 # PREMIUM SKILL COUNT
@@ -126,19 +126,24 @@ def create_premium_skill_count(df):
         "natural language processing"
     ]
 
-    available_skills = [
-        skill for skill in premium_skills
-        if skill in df.columns
-    ]
+    for skill in premium_skills:
+        if skill not in df.columns:
+            df[skill] = df["Skills"].apply(
+                lambda x: 1 if skill in [
+                    s.strip().lower()
+                    for s in str(x).split(",")
+                ] else 0
+            )
 
-    df["Premium_Skill_Count"] = df[available_skills].sum(axis=1)
+    df["Premium_Skill_Count"] = df[premium_skills].sum(axis=1)
 
     print("\nPremium Skill Count Created")
 
     return df
 
+
 #------------------------------------------------------
-# EXPERIENCE × SKILL INTERACTION
+# EXPERIENCE × SKILL
 #------------------------------------------------------
 def create_experience_skill_interaction(df):
 
@@ -150,8 +155,23 @@ def create_experience_skill_interaction(df):
 
     return df
 
+
 #------------------------------------------------------
-# REMOTE × EXPERIENCE INTERACTION
+# EXPERIENCE × PREMIUM SKILL
+#------------------------------------------------------
+def create_experience_premium_interaction(df):
+
+    df["Exp_X_PremiumSkill"] = (
+        df["Experience"] * df["Premium_Skill_Count"]
+    )
+
+    print("\nExperience-Premium Interaction Created")
+
+    return df
+
+
+#------------------------------------------------------
+# REMOTE × EXPERIENCE
 #------------------------------------------------------
 def create_remote_experience_feature(df):
 
@@ -164,7 +184,21 @@ def create_remote_experience_feature(df):
     return df
 
 
+#------------------------------------------------------
+# LOG EXPERIENCE (NEW)
+#------------------------------------------------------
+def create_log_experience(df):
 
+    df["Log_Experience"] = np.log1p(df["Experience"])
+
+    print("\nLog Experience Feature Created")
+
+    return df
+
+
+#------------------------------------------------------
+# EXPERIENCE BUCKET
+#------------------------------------------------------
 def bucket_experience(exp):
     if exp <= 2:
         return "Entry"
@@ -176,28 +210,80 @@ def bucket_experience(exp):
         return "Lead"
 
 
-
-
 def apply_experience_bucket(df):
 
-    df["Experience_Level"] = df["Experience"].apply(bucket_experience)
+    df["Experience_Level"] = df["Experience"].apply(
+        bucket_experience
+    )
 
     print("\nExperience Bucketed")
 
     return df
 
+#------------------------------------------------------
+# SKILL EFFICIENCY
+#------------------------------------------------------
+def create_skill_efficiency(df):
 
+    df["Skill_Efficiency"] = (
+        df["Skill_Count"] / (df["Experience"] + 1)
+    )
+
+    print("\nSkill Efficiency Created")
+
+    return df
+
+#------------------------------------------------------
+# GROUPED SKILL FEATURES
+#------------------------------------------------------
+def create_grouped_skill_features(df):
+
+    skill_groups = {
+        "Programming_Skills": [
+            "python", "r", "java", "c++"
+        ],
+        "ML_Skills": [
+            "machine learning",
+            "deep learning",
+            "natural language processing"
+        ],
+        "Cloud_Skills": [
+            "aws", "azure", "gcp"
+        ],
+        "Database_Skills": [
+            "sql", "mongodb", "postgresql"
+        ],
+        "BigData_Skills": [
+            "spark", "hadoop"
+        ]
+    }
+
+    for group_name, skills in skill_groups.items():
+
+        available = [
+            skill for skill in skills
+            if skill in df.columns
+        ]
+
+        if available:
+            df[group_name] = df[available].sum(axis=1)
+        else:
+            df[group_name] = 0
+
+    print("\nGrouped Skill Features Created")
+
+    return df
 
 
 #------------------------------------------------------
-# ENCODE CATEGORICAL FEATURES
+# ENCODE
 #------------------------------------------------------
 def encoding_categorical(df):
 
     categorical_columns = [
-        'Job_Title',
-        'Location',
-        'Experience_Level'
+        "Job_Title",
+        "Location",
+        "Experience_Level"
     ]
 
     df = pd.get_dummies(
@@ -213,21 +299,21 @@ def encoding_categorical(df):
 
 
 #------------------------------------------------------
-# SPLIT FEATURES + TARGET
+# SPLIT
 #------------------------------------------------------
 def split_features_target(df):
 
     X = df.drop(columns=["Salary", "Skills"])
     y = df["Salary"]
 
-    print(f'\nFeature matrix shape : {X.shape}')
-    print(f'Target Shape: {y.shape}')
+    print(f"\nFeature matrix shape: {X.shape}")
+    print(f"Target shape: {y.shape}")
 
     return X, y
 
 
 #------------------------------------------------------
-# SAVE FEATURE DATASET
+# SAVE
 #------------------------------------------------------
 def save_feature_data(df):
 
@@ -237,7 +323,7 @@ def save_feature_data(df):
 
 
 #------------------------------------------------------
-# MAIN PIPELINE
+# MAIN
 #------------------------------------------------------
 def main():
 
@@ -249,16 +335,19 @@ def main():
     top_skills = extract_top_skills(df)
 
     df = create_skill_features(df, top_skills)
-
     df = reduce_location_categories(df)
-
     df = create_skill_count_feature(df)
-
     df = create_premium_skill_count(df)
 
+    df = create_grouped_skill_features(df)
+
     df = create_experience_skill_interaction(df)
+    df = create_experience_premium_interaction(df)
+
+    df = create_skill_efficiency(df)
 
     df = create_remote_experience_feature(df)
+    df = create_log_experience(df)
 
     df = apply_experience_bucket(df)
 
@@ -274,7 +363,7 @@ def main():
 
 
 #------------------------------------------------------
-# ENTRY POINT
+# ENTRY
 #------------------------------------------------------
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

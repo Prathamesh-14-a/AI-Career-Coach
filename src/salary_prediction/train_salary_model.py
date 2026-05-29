@@ -13,8 +13,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.ensemble import ExtraTreesRegressor
 from xgboost import XGBRegressor
-
-
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.preprocessing import FunctionTransformer
+import seaborn as sns
+import matplotlib.pyplot as plt
 # ------------------------------------------------------------------
 # CONFIG
 # ------------------------------------------------------------------
@@ -76,14 +78,23 @@ def train_test_split_data(X , y):
 
     return X_train , X_test , y_train , y_test
 
+#------------------------------------------------------------
+# TRANSFORM SALARY
+#------------------------------------------------------------
+def function_transform(y_train , y_test):
+    trf = FunctionTransformer(func=np.log1p)
+    y_train_trans = trf.fit_transform(y_train)
+    y_test_trans = trf.transform(y_test)
+    return y_train_trans , y_test_trans
+
 
 # -----------------------------------------------------------
 # TRAIN LINEAR REGRESSION
 # -----------------------------------------------------------
-def train_linear_regression(X_train , y_train):
+def train_linear_regression(X_train , y_train_trans):
     model = LinearRegression()
 
-    model.fit(X_train , y_train)
+    model.fit(X_train , y_train_trans)
     print("\nLinear Regression Trained")
 
     return model
@@ -103,15 +114,15 @@ def make_predictions(model , X_test):
 #------------------------------------------------------------
 # EVALUATE MODEL 
 # -----------------------------------------------------------
-def evaluate_model(y_test, predictions):
+def evaluate_model(y_test_trans, predictions):
 
-    mae = mean_absolute_error(y_test, predictions)
+    mae = mean_absolute_error(y_test_trans, predictions)
 
     rmse = np.sqrt(
-        mean_squared_error(y_test, predictions)
+        mean_squared_error(y_test_trans, predictions)
     )
 
-    r2 = r2_score(y_test, predictions)
+    r2 = r2_score(y_test_trans, predictions)
 
     print("\nMODEL PERFORMANCE")
     print("-" * 30)
@@ -123,26 +134,33 @@ def evaluate_model(y_test, predictions):
 #-----------------------------------------------------------
 # TRAIN RANDOM FOREST
 #-----------------------------------------------------------
-def train_random_forest(X_train, y_train):
+def train_random_forest(X_train, y_train_trans):
+    param_grid = {
+    'n_estimators': [100, 200, 300, 500],
+    'max_depth': [10, 20, 30, None],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'max_features': ['sqrt', 'log2']
+}
     print("\nTraining Random Forest...")
 
-    model = RandomForestRegressor(
-        n_estimators=300,
-        max_depth=15,
-        min_samples_split=10,
-        min_samples_leaf=4,
-        random_state=42,
+    model = RandomizedSearchCV(
+       RandomForestRegressor(random_state=42),
+        param_grid,
+        n_iter=20,
+        cv=5,
+        scoring='r2',
         n_jobs=-1
     )
 
-    model.fit(X_train, y_train)
+    model.fit(X_train, y_train_trans)
 
     return model
 
 #---------------------------------------------------------------
 # TRAINING XGBOOST
 #--------------------------------------------------------------
-def train_gradient_boosting(X_train, y_train):
+def train_gradient_boosting(X_train, y_train_trans):
     print("\nTraining Gradient Boosting...")
 
     model = GradientBoostingRegressor(
@@ -152,12 +170,12 @@ def train_gradient_boosting(X_train, y_train):
         random_state=42
     )
 
-    model.fit(X_train, y_train)
+    model.fit(X_train, y_train_trans)
 
     return model
 
 
-def train_extra_trees(X_train, y_train):
+def train_extra_trees(X_train, y_train_trans):
     print("\nTraining Extra Trees...")
 
     model = ExtraTreesRegressor(
@@ -167,11 +185,11 @@ def train_extra_trees(X_train, y_train):
         n_jobs=-1
     )
 
-    model.fit(X_train, y_train)
+    model.fit(X_train, y_train_trans)
 
     return model
 
-def train_xgboost(X_train ,y_train ):
+def train_xgboost(X_train ,y_train_trans ):
    model =  XGBRegressor(
     n_estimators=500,
     max_depth=6,
@@ -181,7 +199,7 @@ def train_xgboost(X_train ,y_train ):
     random_state=42
     )
    
-   model.fit(X_train, y_train)
+   model.fit(X_train, y_train_trans)
    return model
 
 
@@ -196,11 +214,16 @@ def main():
 
     X_train, X_test, y_train, y_test = \
         train_test_split_data(X, y)
+    
+    y_train_trans , y_test_trans = function_transform(y_train , y_test)
+
+    sns.kdeplot(y_train_trans)
+    plt.show()
 
     # Linear Regression
     lr_model = train_linear_regression(
         X_train,
-        y_train
+        y_train_trans
     )
 
     lr_predictions = make_predictions(
@@ -210,12 +233,12 @@ def main():
 
     print("\nLinear Regression Results")
 
-    evaluate_model(y_test, lr_predictions)
+    evaluate_model(y_test_trans, lr_predictions)
 
     # Random Forest
     rf_model = train_random_forest(
         X_train,
-        y_train
+        y_train_trans
     )
 
     rf_predictions = make_predictions(
@@ -225,12 +248,19 @@ def main():
 
     print("\nRandom Forest Results")
 
-    evaluate_model(y_test, rf_predictions)
+    importance = pd.Series(
+        rf_model.best_estimator_.feature_importances_,
+        index=X_train.columns
+    ).sort_values(ascending=False)
+
+    print(importance.head(20))
+
+    evaluate_model(y_test_trans, rf_predictions)
 
     #Gradient Boosing Regressor
     gb_model = train_gradient_boosting(
         X_train,
-        y_train
+        y_train_trans
     )
 
     gb_predictions = make_predictions(
@@ -240,13 +270,13 @@ def main():
 
     print("\nGradient Boosing Regressor")
 
-    evaluate_model(y_test, gb_predictions)
+    evaluate_model(y_test_trans, gb_predictions)
 
 
     #Gradient Boosing Regressor
     et_model = train_extra_trees(
         X_train,
-        y_train
+        y_train_trans
     )
 
     et_predictions = make_predictions(
@@ -262,7 +292,7 @@ def main():
       #Gradient Boosing Regressor
     xgb_model = train_xgboost(
         X_train,
-        y_train
+        y_train_trans
     )
 
     xgb_predictions = make_predictions(
@@ -272,7 +302,7 @@ def main():
 
     print("\nXGBoost Regressor")
 
-    evaluate_model(y_test, xgb_predictions)
+    evaluate_model(y_test_trans, xgb_predictions)
 
 
     
@@ -280,7 +310,7 @@ def main():
 
 #-------------------------------------------------------
 # ENTRY POINT 
-#------------------------------------------------------A
+#-------------------------------------------------------
 if __name__ == '__main__':
     main()
 
