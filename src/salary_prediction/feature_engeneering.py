@@ -185,42 +185,6 @@ def create_remote_experience_feature(df):
 
 
 #------------------------------------------------------
-# LOG EXPERIENCE (NEW)
-#------------------------------------------------------
-def create_log_experience(df):
-
-    df["Log_Experience"] = np.log1p(df["Experience"])
-
-    print("\nLog Experience Feature Created")
-
-    return df
-
-
-#------------------------------------------------------
-# EXPERIENCE BUCKET
-#------------------------------------------------------
-def bucket_experience(exp):
-    if exp <= 2:
-        return "Entry"
-    elif exp <= 5:
-        return "Mid"
-    elif exp <= 8:
-        return "Senior"
-    else:
-        return "Lead"
-
-
-def apply_experience_bucket(df):
-
-    df["Experience_Level"] = df["Experience"].apply(
-        bucket_experience
-    )
-
-    print("\nExperience Bucketed")
-
-    return df
-
-#------------------------------------------------------
 # SKILL EFFICIENCY
 #------------------------------------------------------
 def create_skill_efficiency(df):
@@ -283,7 +247,6 @@ def encoding_categorical(df):
     categorical_columns = [
         "Job_Title",
         "Location",
-        "Experience_Level"
     ]
 
     df = pd.get_dummies(
@@ -297,13 +260,61 @@ def encoding_categorical(df):
 
     return df
 
+def title_exp(df):
+
+    df['DS_Experience'] = (
+        (df['Job_Title'] == 'Data Scientist').astype(int)
+        * df['Experience']
+    )
+
+    df['DE_Experience'] = (
+        (df['Job_Title'] == 'Data Engineer').astype(int)
+        * df['Experience']
+    )
+
+    df['DA_Experience'] = (
+        (df['Job_Title'] == 'Data Analyst').astype(int)
+        * df['Experience']
+    )
+
+    df['ML_Experience'] = (
+        (df['Job_Title'] == 'Machine Learning Engineer').astype(int)
+        * df['Experience']
+    )
+
+    df['BA_Experience'] = (
+        (df['Job_Title'] == 'Business Analyst').astype(int)
+        * df['Experience']
+    )
+
+    df['Analytics_Experience'] = (
+        (df['Job_Title'] == 'Analytics Specialist').astype(int)
+        * df['Experience']
+    )
+
+    return df
+
+
+#-------------------------------------------------------
+#CLIP SALARY OUTLIERS
+#-------------------------------------------------------
+def clip_salary_outliers(df):
+    q1 = df['Salary'].quantile(0.01)
+    q99 = df['Salary'].quantile(0.99)
+
+    df = df[
+        (df['Salary'] >= q1) &
+        (df['Salary'] <= q99)
+    ]
+
+    return df
 
 #------------------------------------------------------
 # SPLIT
 #------------------------------------------------------
 def split_features_target(df):
 
-    X = df.drop(columns=["Salary", "Skills"])
+    X = df.drop(columns=["Salary"])
     y = df["Salary"]
 
     print(f"\nFeature matrix shape: {X.shape}")
@@ -346,20 +357,22 @@ def main():
 
     df = create_skill_efficiency(df)
 
+    df = clip_salary_outliers(df)
+
     df = create_remote_experience_feature(df)
-    df = create_log_experience(df)
-
-    df = apply_experience_bucket(df)
-
-    print(df["Experience_Level"].value_counts())
-
+    df = title_exp(df)
     df = encoding_categorical(df)
+
+    print(df.columns)
+
+    df =  df.drop(columns=["Skills"])
 
     save_feature_data(df)
 
     X, y = split_features_target(df)
 
     print(df.columns)
+    
 
 
 #------------------------------------------------------
