@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+import joblib
 
 from sklearn.model_selection import (
     train_test_split,
@@ -422,6 +423,55 @@ def main():
     cat_predictions,
     "CatBoost"
     )
+
+    #Saving Model
+    joblib.dump(
+    cat_model.best_estimator_,
+     BASE_PATH / 'src' / 'models' / 'best_salary_model.pkl'
+    )
+
+    print("Best model saved as best_salary_model.pkl")
+
+    # Prediction Demo
+    print("\nSample Predictions")
+    print("-" * 50)
+
+    sample = X_test.iloc[:5]
+
+    preds = np.expm1(
+        cat_model.predict(sample)
+    )
+
+
+    # Actual Vs Predicted Plot
+    print(preds)
+
+    actual = np.expm1(y_test_trans)
+    predicted = np.expm1(cat_predictions)
+
+    plt.figure(figsize=(10, 6))
+    plt.scatter(actual, predicted, alpha=0.5)
+
+    # Perfect prediction reference line
+    plt.plot(
+    [actual.min(), actual.max()],
+    [actual.min(), actual.max()],
+    linestyle='--'
+    )
+
+    plt.xlabel("Actual Salary")
+    plt.ylabel("Predicted Salary")
+    plt.title("Actual vs Predicted Salary Prediction")
+
+    plt.show()
+
+    comparison_df = pd.DataFrame({
+    "Actual Salary": actual[:10],
+    "Predicted Salary": predicted[:10]
+    })
+
+    print("\nActual vs Predicted (First 10)")
+    print(comparison_df)
 
 
 if __name__ == "__main__":
