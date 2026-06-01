@@ -4,8 +4,6 @@ import numpy as np
 from pathlib import Path
 from src.salary_prediction.train_salary_model import preprocess_data
 from src.salary_prediction.train_salary_model import feature_engineering
-from src.salary_prediction.train_salary_model import function_transform
-
 
 # Load saved model
 
