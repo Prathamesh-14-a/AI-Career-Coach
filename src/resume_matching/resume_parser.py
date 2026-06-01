@@ -23,6 +23,7 @@ TECHNICAL_SKILLS = [
 
     'machine learning',
     'tensorflow', 'pytorch', 'scikit-learn',
+    'deep learning'
 
     'aws', 'azure', 'gcp', 'statistics'
 
