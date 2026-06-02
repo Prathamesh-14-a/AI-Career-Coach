@@ -41,7 +41,13 @@ ALIASES = {
     "powerbi": "power bi",
     "power-bi": "power bi",
     "machinelearning": "machine learning",
-    "postgres": "postgresql"
+    "eda": "exploratory data analysis",
+    "sklearn": "scikit-learn",
+    "nlp": "natural language processing",
+    "cnn": "convolutional neural networks",
+    "rnn": "recurrent neural networks",
+    "postgres": "postgresql" , 
+
 }
 
 # ---------------------------------------------------
@@ -153,14 +159,16 @@ def text_validation(text:str) -> bool:
 # ----------------------------------------------
 def extract_skills(resume_text: str, skills_list: list) -> list:
 
+    resume_text = resume_text.lower()
     skill_set = set()
-    for skill in skills_list:
-        escape_skill = re.escape(skill)
 
+    for skill in skills_list:
+        escape_skill = re.escape(skill.lower())
         pattern = rf'\b{escape_skill}\b'
 
-        if re.search(pattern , resume_text):
-            skill_set.add(skill)
+        if re.search(pattern, resume_text):
+            normalized_skill = ALIASES.get(skill.lower(), skill.lower())
+            skill_set.add(normalized_skill)
 
     return sorted(skill_set)
 
