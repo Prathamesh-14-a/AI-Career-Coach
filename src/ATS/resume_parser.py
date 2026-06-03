@@ -245,14 +245,14 @@ project_section = sections.get("projects" , "")
 skills_from_skills = extract_skills(skill_section , SKILLS_DB)
 skills_from_projects = extract_skills(project_section , SKILLS_DB)
 
-print("\nSkills Section Matches:")
-print(skills_from_skills)
+# print("\nSkills Section Matches:")
+# print(skills_from_skills)
 
-print("\nProjects Section Matches:")
-print(skills_from_projects)
+# print("\nProjects Section Matches:")
+# print(skills_from_projects)
 
-print("\nCombined Unique Skills:")
-print(sorted(set(skills_from_skills + skills_from_projects)))
+# print("\nCombined Unique Skills:")
+# print(sorted(set(skills_from_skills + skills_from_projects)))
 
 
 

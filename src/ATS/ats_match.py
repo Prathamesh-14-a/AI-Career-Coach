@@ -40,13 +40,13 @@ score = (len(matched_skills) / len(job_description_skills)) * 100
 # print("\nJob Description Skills:")
 # print(job_description_skills)
 
-print("\nResume Skills:")
-print(resume_skills)
+# print("\nResume Skills:")
+# print(resume_skills)
 
-# print("\nMatched Skills:")
-# print(matched_skills)
+# # print("\nMatched Skills:")
+# # print(matched_skills)
 
-print(f"\nATS Score: {score:.2f}%")
+# print(f"\nATS Score: {score:.2f}%")
 
 BENCHMARK_DF = r'd:\Startup\Project\ai-career-coach\data\processed\top_skill_by_role_cleaned.csv'
 
@@ -62,7 +62,6 @@ def load_data(path):
         raise
 
 benchmark_df = load_data(BENCHMARK_DF)
-print(benchmark_df.head())
 
 
 def get_role_skills(role):
@@ -135,5 +134,20 @@ def calculated_weighted_score(
             'Coverage': coverage}
 
 
-print(calculated_weighted_score(resume_skills , role_skills))
-print(len(role_skills))
+#-----------------------------------------------------
+# MAIN
+#-----------------------------------------------------
+def main():
+    resume_file = r"d:\Startup\Project\ai-career-coach\data\resume\Pratham_Resume_Updated.pdf"
+    resume_text = extract_resume_text(resume_file)
+    resume_skills = extract_skills(resume_text, SKILLS_DB)
+
+
+    da_skills = get_role_skills('Data Analyst')
+
+    ats_result = calculated_weighted_score(resume_skills , da_skills)
+    print(ats_result)
+
+if __name__ == "__main__":
+    main()
+
