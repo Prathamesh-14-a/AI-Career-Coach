@@ -127,7 +127,7 @@ def calculated_weighted_score(
     2
     )
 
-    return {'ATS score': score, 
+    return {'Readiness Score': score, 
             'Matched': matched, 
             'Missing': missing, 
             'Priority': priority, 
