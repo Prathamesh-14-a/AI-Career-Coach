@@ -57,9 +57,6 @@ def extract_top_skills(df, top_n=25):
         for skill, count in skill_counts.most_common(top_n)
     ]
 
-    print("\nTop Skills:")
-    print(top_skills)
-
     return top_skills
 
 
@@ -75,8 +72,6 @@ def create_skill_features(df, top_skills):
                 for s in str(x).split(",")
             ] else 0
         )
-
-    print("\nSkill Features Created")
 
     return df
 
@@ -107,8 +102,6 @@ def create_skill_count_feature(df):
         ])
     )
 
-    print("\nSkill Count Feature Created")
-
     return df
 
 
@@ -137,8 +130,6 @@ def create_premium_skill_count(df):
 
     df["Premium_Skill_Count"] = df[premium_skills].sum(axis=1)
 
-    print("\nPremium Skill Count Created")
-
     return df
 
 
@@ -150,8 +141,6 @@ def create_experience_skill_interaction(df):
     df["Exp_X_SkillCount"] = (
         df["Experience"] * df["Skill_Count"]
     )
-
-    print("\nExperience-Skill Interaction Created")
 
     return df
 
@@ -165,8 +154,6 @@ def create_experience_premium_interaction(df):
         df["Experience"] * df["Premium_Skill_Count"]
     )
 
-    print("\nExperience-Premium Interaction Created")
-
     return df
 
 
@@ -179,8 +166,6 @@ def create_remote_experience_feature(df):
         df["remote_status"] * df["Experience"]
     )
 
-    print("\nRemote Experience Feature Created")
-
     return df
 
 
@@ -192,8 +177,6 @@ def create_skill_efficiency(df):
     df["Skill_Efficiency"] = (
         df["Skill_Count"] / (df["Experience"] + 1)
     )
-
-    print("\nSkill Efficiency Created")
 
     return df
 
@@ -233,8 +216,6 @@ def create_grouped_skill_features(df):
             df[group_name] = df[available].sum(axis=1)
         else:
             df[group_name] = 0
-
-    print("\nGrouped Skill Features Created")
 
     return df
 
