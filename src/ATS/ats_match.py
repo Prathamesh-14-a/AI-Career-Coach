@@ -133,7 +133,6 @@ def calculated_weighted_score(
             'Priority': priority, 
             'Coverage': coverage}
 
-
 #-----------------------------------------------------
 # MAIN
 #-----------------------------------------------------
