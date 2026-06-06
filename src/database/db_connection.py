@@ -1,15 +1,13 @@
-import psycopg2
 
-def get_connection():
-    try:
-        conn = psycopg2.connect(
-            dbname="career_coach",
-            user="postgres",
-            password="Pratham@2006",
-            host="localhost",
-            port="5432"
-        )
-        print("Connected successfully to the database.")
-        return conn
-    except Exception as e:
-        print("Connection failed:", e)
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+DATABASE_URL = "postgresql://postgres:Pratham2006@localhost:5432/career_coach"
+
+engine = create_engine(DATABASE_URL)
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
