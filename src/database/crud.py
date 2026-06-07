@@ -8,15 +8,14 @@ from src.database.models import Analysis
 #-------------------------------------------------------
 # CREATE USER FUNCTION
 #-------------------------------------------------------
-def create_user(username , email , password_hash):
-
+def create_user(username, email, password_hash):
     session = SessionLocal()
 
     try:
         user = User(
-            username = username , 
-            email = email ,
-            password_hash = password_hash
+            username=username,
+            email=email,
+            password_hash=password_hash
         )
 
         session.add(user)
@@ -24,6 +23,10 @@ def create_user(username , email , password_hash):
         session.refresh(user)
 
         return user
+
+    except Exception:
+        session.rollback()
+        raise
 
     finally:
         session.close()
@@ -67,6 +70,11 @@ def save_resume(
         session.commit()
 
         return resume
+    
+    except Exception:
+        session.rollback()
+        raise
+
     
     finally:
         session.close()
@@ -133,6 +141,10 @@ def save_analysis(
 
         return analysis
     
+    except Exception:
+        session.rollback()
+        raise
+
     finally:
         session.close()
 
@@ -179,6 +191,10 @@ def save_salary_prediction(
 
         return salary_prediction
     
+    except Exception:
+        session.rollback()
+        raise
+
     finally:
         session.close()
 
