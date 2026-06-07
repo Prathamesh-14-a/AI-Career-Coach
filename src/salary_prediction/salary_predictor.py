@@ -136,7 +136,7 @@ def master_salary_prediction_pipeline(
     X = build_feature_matrix(input_df)
     prediction_log = MODEL.predict(X)
     prediction_salary = np.expm1(prediction_log)
-    return float(prediction_salary[0])
+    return float(f"{prediction_salary[0]:.2f}")
 
 
 if __name__ == "__main__":

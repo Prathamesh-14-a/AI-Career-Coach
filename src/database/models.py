@@ -2,7 +2,7 @@ from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import Column, Integer, String, DateTime , ForeignKey
 from datetime import datetime
 from sqlalchemy.orm import relationship
-from sqlalchemy import Float
+from sqlalchemy import Float , Text
 
 
 class Base(DeclarativeBase):
@@ -30,6 +30,10 @@ class User(Base):
         back_populates="user"
     )
 
+    salary_predictions = relationship(
+    "SalaryPrediction",
+    back_populates="user"
+    )
 
 # Resume Table
 class Resume(Base):
@@ -99,6 +103,40 @@ class Analysis(Base):
         'Resume',
         back_populates="analyses"
     )
+
+
+    # SALARY PREDICTION DATA TABLE
+class SalaryPrediction(Base):
+    __tablename__ = "salary_predictions"
+
+    id = Column(Integer, primary_key=True)
+
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id"),
+        nullable=False
+    )
+
+    role = Column(String(255))
+
+    experience = Column(Float)
+
+    location = Column(String(255))
+
+    skills = Column(Text)
+
+    predicted_salary = Column(Float)
+
+    prediction_date = Column(
+        DateTime,
+        default=datetime.utcnow
+    )
+
+    user = relationship(
+        "User",
+        back_populates="salary_predictions"
+    )
+
 
 
 

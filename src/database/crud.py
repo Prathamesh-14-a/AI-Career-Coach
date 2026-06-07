@@ -1,5 +1,5 @@
 from src.database.db_connection import SessionLocal
-from src.database.models import User
+from src.database.models import SalaryPrediction, User
 from src.database.models import Resume
 from sqlalchemy.orm import joinedload
 from src.database.models import Analysis
@@ -21,6 +21,7 @@ def create_user(username , email , password_hash):
 
         session.add(user)
         session.commit()
+        session.refresh(user)
 
         return user
 
@@ -145,6 +146,52 @@ def get_analysis_history(user_id):
         ).all()
 
         return analyses
+    
+    finally:
+        session.close()
+
+
+#------------------------------------------
+# SAVE SALARY PREDICTION
+#------------------------------------------
+def save_salary_prediction(
+    user_id,
+    role,
+    experience,
+    location,
+    skills,
+    predicted_salary
+):
+    session = SessionLocal()
+
+    try:
+        salary_prediction = SalaryPrediction(
+            user_id=user_id,
+            role=role,
+            experience=experience,
+            location=location,
+            skills=skills,
+            predicted_salary=predicted_salary
+        )
+
+        session.add(salary_prediction)
+        session.commit()
+
+        return salary_prediction
+    
+    finally:
+        session.close()
+
+
+def get_prediction_history(user_id):
+    session = SessionLocal()
+
+    try:
+        predictions = session.query(SalaryPrediction).filter(
+            SalaryPrediction.user_id == user_id
+        ).all()
+
+        return predictions
     
     finally:
         session.close()
