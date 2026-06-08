@@ -1,5 +1,5 @@
 from src.database.db_connection import SessionLocal
-from src.database.models import SalaryPrediction, User
+from src.database.models import SalaryPrediction, User , AIConversation
 from src.database.models import Resume
 from sqlalchemy.orm import joinedload
 from src.database.models import Analysis
@@ -211,3 +211,114 @@ def get_prediction_history(user_id):
     
     finally:
         session.close()
+
+    
+#------------------------------------------------
+# SAVE AI CONVERSATION
+#------------------------------------------------
+
+def save_ai_conversation(
+    user_id,
+    question,
+    response
+):
+    session = SessionLocal()
+
+    try:
+
+        conversation = AIConversation(
+            user_id=user_id,
+            question=question,
+            response=response
+        )
+
+        session.add(conversation)
+        session.commit()
+        session.refresh(conversation)
+
+        return conversation
+
+    except Exception:
+        session.rollback()
+        raise
+
+    finally:
+        session.close()
+
+def get_ai_conversation_history(
+    user_id
+):
+
+    session = SessionLocal()
+
+    try:
+
+        conversations = (
+            session.query(
+                AIConversation
+            )
+            .filter(
+                AIConversation.user_id == user_id
+            )
+            .order_by(
+                AIConversation.created_at.desc()
+            )
+            .all()
+        )
+
+        return conversations
+
+    finally:
+
+        session.close()
+
+
+def get_ai_conversation(conversation_id):
+
+    session = SessionLocal()
+
+    try:
+
+        conversation = (
+            session.query(AIConversation)
+            .filter(
+                AIConversation.id == conversation_id
+            )
+            .first()
+        )
+
+        return conversation
+
+    finally:
+        session.close()
+
+
+def delete_ai_conversation(conversation_id):
+
+    session = SessionLocal()
+
+    try:
+
+        conversation = (
+            session.query(AIConversation)
+            .filter(
+                AIConversation.id == conversation_id
+            )
+            .first()
+        )
+
+        if conversation:
+            session.delete(conversation)
+            session.commit()
+
+            return True
+
+        return False
+
+    except Exception:
+        session.rollback()
+        raise
+
+    finally:
+        session.close()
+

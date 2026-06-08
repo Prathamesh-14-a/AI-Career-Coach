@@ -14,9 +14,19 @@ client = genai.Client(api_key=api_key)
 
 def generate_response(prompt: str):
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
 
-    return response.text
+        return response.text
+    
+    except Exception as e:
+
+        print(f"Gemini Error: {e}")
+
+        return (
+            "AI service is temporarily unavailable. "
+            "Please try again in a few minutes."
+        )
