@@ -28,7 +28,7 @@ if is_authenticated():
 st.title("🔐 Login")
 
 st.write(
-    "Welcome back to AI Career Coach"
+    "Welcome back to DataPilot AI"
 )
 
 email = st.text_input(

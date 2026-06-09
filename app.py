@@ -1,16 +1,21 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="AI Career Coach",
+    page_title="DataPilot AI",
     page_icon="🚀",
     layout="wide"
 )
 
-st.title("🚀 AI Career Coach")
+st.title("🚀 DataPilot AI")
+st.caption("Navigate Your Data Career with AI")
+
+st.subheader(
+    "Your AI Copilot for Data Science & AI Careers"
+)
 
 st.write(
     """
-    Welcome to AI Career Coach.
+    Welcome to DataPilot AI.
 
     Features:
     - Resume Analyzer

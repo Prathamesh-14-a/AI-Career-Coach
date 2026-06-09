@@ -8,7 +8,9 @@ from src.auth.session_manager import (
 if not is_authenticated():
     st.warning("Please login first")
     st.stop()
+from components.sidebar import show_sidebar
 
+show_sidebar()
 # Header
 st.title("🏠 Dashboard")
 
@@ -17,7 +19,7 @@ st.write(
 )
 
 st.caption(
-    "Your AI Career Coach Control Center"
+    "Your AI Copilot for Data Careers"
 )
 
 # Metric Section
@@ -97,20 +99,3 @@ st.info(
     "Career guidance conversation started"
 )
 
-# Logout Button
-with st.sidebar:
-
-    st.write(
-        f"👤 {st.session_state['username']}"
-    )
-
-    if st.button(
-        "🚪 Logout",
-        use_container_width=True
-    ):
-
-        logout()
-
-        st.switch_page(
-            "pages/1_Login.py"
-        )

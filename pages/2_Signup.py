@@ -30,7 +30,7 @@ if is_authenticated():
 st.title("📝 Create Account")
 
 st.write(
-    "Join AI Career Coach and start building your career."
+    "Join DataPilot AI and start building your career."
 )
 
 username = st.text_input(

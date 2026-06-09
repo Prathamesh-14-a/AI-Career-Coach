@@ -1,4 +1,8 @@
-# AI Career Coach
+# DataPilot AI
+
+An AI-powered career guidance platform
+for Data Science, Machine Learning,
+Analytics, and AI professionals.
 
 ## Problem
 Many data analyst freshers in India fail to get shortlisted due to poor resume alignment with job requirements.
@@ -9,6 +13,7 @@ This project analyzes resumes against real job market data and provides:
 - ATS compatibility
 - Skill gap analysis
 - Hiring probability insights
+- AI guidance support
 
 ## Tech Stack
 - Python
